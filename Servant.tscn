@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Servant.gd" type="Script" id=1]
-[ext_resource path="res://sprites/man_test.png" type="Texture" id=2]
+[ext_resource path="res://BloodFx.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/man_test.png" type="Texture" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -18,7 +19,7 @@ custom_solver_bias = 0.0
 radius = 64.0
 height = 128.0
 
-[node name="Servant" type="Area2D" groups=[
+[node name="Servant" type="Area2D" index="0" groups=[
 "servant",
 ]]
 
@@ -32,6 +33,10 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Pickable" ]
+__meta__ = {
+"_edit_group_": true
+}
+bloodfx = ExtResource( 2 )
 min_food = 0
 max_food = 5
 min_weight = 40

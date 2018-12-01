@@ -11,7 +11,9 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Ground" parent="." index="0" instance=ExtResource( 1 )]
 
-buf_size = 999
+distance = 100
+neg_length = 10
+height = 5
 
 [node name="Team" parent="." index="1" instance=ExtResource( 2 )]
 
@@ -21,11 +23,9 @@ _is_debug = true
 
 [node name="MainCam" parent="Team" index="1" instance=ExtResource( 3 )]
 
-offset_x_max = 300
-
 [node name="Mob" parent="." index="2" instance=ExtResource( 4 )]
 
-position = Vector2( 440, 560 )
+position = Vector2( 870, 580 )
 
 [connection signal="size_changed" from="Team" to="Team/MainCam" method="_on_Team_size_changed"]
 

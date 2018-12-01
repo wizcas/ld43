@@ -1,7 +1,9 @@
 extends Node2D
 
 export (int) var surface_y = 4
-export (int) var buf_size = 20
+export (int) var distance = 100
+export (int) var neg_length = 10
+export (int) var height = 5
 
 onready var _map = $TileMap
 var tiles
@@ -13,7 +15,7 @@ func _ready():
 	tiles = _map.tile_set.get_tiles_ids()
 	cur_x = 0
 	
-	_gen_distance(buf_size)
+	gen(distance)
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
@@ -24,8 +26,12 @@ func _ready():
 func _rnd_tile_idx():
 	return randi() % tiles.size()
 	
-func _gen_distance(cell_count):
-	for i in range(cell_count):
-		_map.set_cell(cur_x, surface_y, _rnd_tile_idx())
+func gen(cell_count):
+	for x in range(cell_count):
+		for y in range(height):
+			_map.set_cell(cur_x, surface_y + y, _rnd_tile_idx())
 		cur_x += 1
+	for x in range(neg_length):
+		for y in range(height):
+			_map.set_cell(-1-x, surface_y + y, _rnd_tile_idx())
 		

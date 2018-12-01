@@ -47,12 +47,14 @@ load_path = "res://.import/ground3.png-2517b203b23104897e4801eb10a12b2d.stex"
 2/navigation_offset = Vector2( 0, 0 )
 2/shapes = [  ]
 
-[node name="Ground" type="Node2D"]
+[node name="Ground" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Cell" ]
 surface_y = 4
-buf_size = 20
+distance = 100
+neg_length = 10
+height = 5
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 

@@ -3,6 +3,7 @@ extends Area2D
 signal feeding
 signal gone
 
+export (PackedScene) var bloodfx
 export (int) var min_food = 0
 export (int) var max_food = 5
 export (int) var min_weight = 40
@@ -59,6 +60,9 @@ func charge():
 	
 func hurt():
 	# play death anim & fx & sfx, etc.
+	var fx = bloodfx.instance()
+	fx.position = position + Vector2(0,-1) * $CollisionShape2D.shape.height * 1 + Vector2(1, 0) * 32
+	get_node('..').add_child(fx)
 	queue_free()
 	
 func dismiss():
