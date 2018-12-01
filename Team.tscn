@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Team.gd" type="Script" id=1]
+[ext_resource path="res://Servant.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Food.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Nino.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 50, 64 )
+
+[node name="Team" type="Area2D"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_mask = 0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Transform" ]
+servant_gen = ExtResource( 2 )
+food_gen = ExtResource( 3 )
+y_offset = 200
+x_offset = 30
+max_size = 5
+spawn_start_x = -100
+margin = 10
+slot_width = 80
+move_speed = 100
+_is_debug = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+position = Vector2( 0, -64 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Nino" parent="." index="1" instance=ExtResource( 4 )]
+
+_sections_unfolded = [ "Collision", "Transform" ]
+
+[connection signal="area_entered" from="." to="." method="_on_Team_area_entered"]
+
+[connection signal="area_exited" from="." to="." method="_on_Team_area_exited"]
+
+
