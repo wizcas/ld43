@@ -9,6 +9,8 @@
 
 [node name="HUD" parent="." index="1" instance=ExtResource( 2 )]
 
+[connection signal="meters_changed" from="World" to="HUD" method="_on_World_meters_changed"]
+
 [connection signal="nino_hp_changed" from="World/Team" to="HUD" method="_on_Team_nino_hp_changed"]
 
 [connection signal="size_changed" from="World/Team" to="HUD" method="_on_Team_size_changed"]

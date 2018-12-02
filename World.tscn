@@ -68,7 +68,8 @@ _is_debug = true
 
 [node name="Servant" parent="." index="4" instance=ExtResource( 3 )]
 
-position = Vector2( 230, 0 )
+position = Vector2( 230, 32 )
+_sections_unfolded = [ "Collision", "Pickable", "Transform" ]
 
 [node name="First Mob" type="Position2D" parent="." index="5"]
 

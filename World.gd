@@ -1,5 +1,7 @@
 extends Node
 
+signal meters_changed
+
 export (PackedScene) var mob_gen
 export (PackedScene) var servant_gen
 export (int) var distance = 500
@@ -24,6 +26,7 @@ func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
 #	print('i\'m @ {0}'.format([cur_distance()]))
+	emit_signal('meters_changed', cur_distance(), distance)
 	pass
 
 func meter2x(meter):

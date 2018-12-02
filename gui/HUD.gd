@@ -72,3 +72,9 @@ func update_hp():
 			var filled = cur_hp - i > 0
 			hp_meter.get_child(i).update(filled)
 		hp_dirty = false
+
+func _on_World_meters_changed(passed, total):
+	update_meters(total - passed)
+	
+func update_meters(meters_left):
+	$Bg/MarginContainer/Groups/Right/Lines/Value/Meter.text = '%.1f' % [meters_left]
