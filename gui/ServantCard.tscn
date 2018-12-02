@@ -1,6 +1,19 @@
-[gd_scene format=2]
+[gd_scene load_steps=6 format=2]
 
-[node name="VBoxContainer" type="PanelContainer" index="0"]
+[ext_resource path="res://gui/ServantCard.gd" type="Script" id=1]
+[ext_resource path="res://sprites/human/human-male.png" type="Texture" id=2]
+[ext_resource path="res://gui/weight-sm.png" type="Texture" id=3]
+[ext_resource path="res://gui/food-sm.png" type="Texture" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+
+flags = 0
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 54, 40 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[node name="ServantCard" type="PanelContainer"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -14,9 +27,10 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+script = ExtResource( 1 )
 _sections_unfolded = [ "Margin", "Rect", "custom_constants" ]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." index="0"]
+[node name="Items" type="VBoxContainer" parent="." index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -24,8 +38,8 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 47.0
-margin_bottom = 135.0
+margin_right = 61.0
+margin_bottom = 171.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -35,13 +49,13 @@ size_flags_vertical = 1
 alignment = 0
 _sections_unfolded = [ "Margin" ]
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer" index="0"]
+[node name="Avatar" type="TextureRect" parent="Items" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 40.0
+margin_right = 54.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -50,42 +64,132 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+texture = SubResource( 1 )
 stretch_mode = 0
 _sections_unfolded = [ "Rect" ]
 
-[node name="Button" type="Button" parent="VBoxContainer" index="1"]
+[node name="Weight" type="HBoxContainer" parent="Items" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 44.0
-margin_right = 40.0
-margin_bottom = 84.0
-rect_min_size = Vector2( 40, 40 )
+margin_right = 54.0
+margin_bottom = 58.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
+mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-flat = false
-align = 1
+alignment = 0
+_sections_unfolded = [ "Rect" ]
 
-[node name="Button2" type="Button" parent="VBoxContainer" index="2"]
+[node name="Icon" type="TextureRect" parent="Items/Weight" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 88.0
-margin_right = 40.0
-margin_bottom = 128.0
+margin_right = 12.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 3 )
+stretch_mode = 0
+
+[node name="Value" type="Label" parent="Items/Weight" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 16.0
+margin_right = 54.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "120kg"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="Food" type="HBoxContainer" parent="Items" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 62.0
+margin_right = 54.0
+margin_bottom = 76.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Icon" type="TextureRect" parent="Items/Food" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 12.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 4 )
+stretch_mode = 0
+
+[node name="Value" type="Label" parent="Items/Food" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 16.0
+margin_right = 54.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "x 20"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="SacrificeButton" type="Button" parent="Items" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 80.0
+margin_right = 54.0
+margin_bottom = 120.0
 rect_min_size = Vector2( 40, 40 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -98,7 +202,37 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
+text = "Go"
 flat = false
 align = 1
+
+[node name="FeedButton" type="Button" parent="Items" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 124.0
+margin_right = 54.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 40, 40 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Eat"
+flat = false
+align = 1
+
+[connection signal="pressed" from="Items/SacrificeButton" to="." method="_on_SacrificeButton_pressed"]
+
+[connection signal="pressed" from="Items/FeedButton" to="." method="_on_FeedButton_pressed"]
 
 

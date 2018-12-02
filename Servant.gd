@@ -38,10 +38,6 @@ func _process(delta):
 			position.x = to_x
 		else:
 			position.x = lerp(position.x, to_x, delta)	
-	_update_feed_button()
-
-func _update_feed_button():
-	$FeedButton.visible = food > 0
 
 func goto(x):
 	to_x = x
@@ -83,6 +79,3 @@ func _unhandled_input(event):
 	and event.pressed:
 		get_tree().set_input_as_handled()
 		charge()
-
-func _on_FeedButton_pressed():
-	feed()

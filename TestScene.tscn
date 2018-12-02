@@ -6,8 +6,7 @@
 [ext_resource path="res://Mob.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gui/HUD.tscn" type="PackedScene" id=5]
 
-
-[node name="TestScene" type="Node2D" index="0"]
+[node name="TestScene" type="Node2D"]
 
 _sections_unfolded = [ "Transform" ]
 
@@ -20,8 +19,6 @@ y_offset = 30
 _is_debug = true
 
 [node name="MainCam" parent="Team" index="1" instance=ExtResource( 3 )]
-
-offset_x_min = 60
 
 [node name="Mob" parent="." index="2" instance=ExtResource( 4 )]
 
@@ -36,6 +33,8 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="HUD" parent="CanvasLayer" index="0" instance=ExtResource( 5 )]
+
+[connection signal="size_changed" from="Team" to="CanvasLayer/HUD" method="_on_Team_size_changed"]
 
 [connection signal="size_changed" from="Team" to="Team/MainCam" method="_on_Team_size_changed"]
 
