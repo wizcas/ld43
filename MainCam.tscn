@@ -2,11 +2,11 @@
 
 [ext_resource path="res://MainCam.gd" type="Script" id=1]
 
-[node name="MainCam" type="Node2D"]
+[node name="MainCam" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Offset", "Transform" ]
-offset_x_min = 100
+offset_x_min = 60
 offset_x_max = 300
 
 [node name="Tween" type="Tween" parent="." index="0"]
@@ -20,7 +20,7 @@ playback/speed = 1.0
 
 [node name="Cam" type="Camera2D" parent="." index="1"]
 
-offset = Vector2( 0, -500 )
+offset = Vector2( 0, -380 )
 anchor_mode = 0
 rotating = false
 current = true
