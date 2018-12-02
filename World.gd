@@ -1,10 +1,13 @@
 extends Node
 
 signal meters_changed
+signal game_over
+signal victory
 
 export (PackedScene) var mob_gen
 export (PackedScene) var servant_gen
-export (int) var distance = 500
+export (int) var map_range = 500
+export (int) var goal_distance = 300
 export (int) var mob_start_distance = 10
 export (int) var mob_end_distance = 20
 export (int) var min_mob_margin = 10
@@ -21,12 +24,13 @@ func _ready():
 	gen_ground()
 	gen_mobs()
 	gen_servants()
+	place_goal()
 
 func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
 #	print('i\'m @ {0}'.format([cur_distance()]))
-	emit_signal('meters_changed', cur_distance(), distance)
+	emit_signal('meters_changed', cur_distance(), goal_distance)
 	pass
 
 func meter2x(meter):
@@ -39,12 +43,12 @@ func rnd_meter(min_val, max_val):
 	return int(rand_range(min_val, max_val))
 
 func gen_ground():
-	$Ground.gen(distance)
+	$Ground.gen(map_range)
 	
 func gen_mobs():
 	var mob_meter = mob_start_distance + rnd_meter(min_mob_margin, max_mob_margin)
 	var i = 0
-	while mob_meter < distance - mob_end_distance:
+	while mob_meter < goal_distance - mob_end_distance:
 		mob_meter_list.append(mob_meter)
 		var m = mob_gen.instance()
 		m.position.x= meter2x(mob_meter)
@@ -66,6 +70,16 @@ func gen_servants():
 	#			print('servant {0} @ {1} ({2})'.format([i, servant_meter, s.position]))
 				add_child(s)
 			servant_meter += rnd_meter(min_servant_margin, max_servant_margin)
+			
+func place_goal():
+	$Goal.position.x = meter2x(goal_distance)
 
 func cur_distance():
 	return x2meter($Team.position.x)
+
+func _on_Team_nino_dead():
+	emit_signal('game_over')
+
+
+func _on_Team_victory():
+	emit_signal('victory')

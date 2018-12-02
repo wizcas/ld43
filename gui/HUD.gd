@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal paused
+
 export (PackedScene) var servant_card_gen
 
 onready var servant_root = $Bg/MarginContainer/Groups/Left/ServantList
@@ -78,3 +80,7 @@ func _on_World_meters_changed(passed, total):
 	
 func update_meters(meters_left):
 	$Bg/MarginContainer/Groups/Right/Lines/Value/Meter.text = '%.1f' % [meters_left]
+
+
+func _on_Pause_pressed():
+	emit_signal('paused')

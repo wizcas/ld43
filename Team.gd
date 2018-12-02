@@ -2,6 +2,8 @@ extends Area2D
 
 signal size_changed
 signal nino_hp_changed
+signal nino_dead
+signal victory
 
 export (PackedScene) var servant_gen
 export (PackedScene) var food_gen
@@ -130,12 +132,20 @@ func _on_Servant_gone(servant):
 func _on_Servant_feeding(servant):
 	print('feeding')
 	var from = servant.position
-	from.y += 200
+	from.y += 64
 	var to = $Nino.position
-	to.y += 30
+	to.y += 16
 	var f = food_gen.instance()
 	f.fly(from, to)
 	add_child(f)
 
 func _on_Nino_hp_changed(hp):
 	emit_signal('nino_hp_changed', hp)
+
+func _on_Nino_dead():
+	stop()
+	emit_signal('nino_dead')
+
+func _on_Nino_victory():
+	stop()
+	emit_signal('victory')

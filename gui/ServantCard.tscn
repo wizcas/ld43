@@ -1,34 +1,37 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://gui/ServantCard.gd" type="Script" id=1]
-[ext_resource path="res://sprites/human/human-male.png" type="Texture" id=2]
-[ext_resource path="res://gui/weight-sm.png" type="Texture" id=3]
-[ext_resource path="res://gui/food-sm.png" type="Texture" id=4]
+[ext_resource path="res://gui/cardboard-panel.tres" type="StyleBox" id=1]
+[ext_resource path="res://gui/ServantCard.gd" type="Script" id=2]
+[ext_resource path="res://sprites/human/human-male.png" type="Texture" id=3]
+[ext_resource path="res://gui/weight-sm.png" type="Texture" id=4]
+[ext_resource path="res://gui/food-sm.png" type="Texture" id=5]
+[ext_resource path="res://gui/boxtheme.tres" type="Theme" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 
 flags = 0
-atlas = ExtResource( 2 )
+atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 54, 40 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[node name="ServantCard" type="PanelContainer"]
+[node name="ServantCard" type="PanelContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 54.0
-margin_bottom = 142.0
+margin_right = 74.0
+margin_bottom = 174.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = ExtResource( 1 )
-_sections_unfolded = [ "Margin", "Rect", "custom_constants" ]
+custom_styles/panel = ExtResource( 1 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Margin", "Rect", "Theme", "custom_constants", "custom_styles" ]
 
 [node name="Items" type="VBoxContainer" parent="." index="0"]
 
@@ -36,10 +39,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 61.0
-margin_bottom = 171.0
+margin_left = 10.0
+margin_top = 5.0
+margin_right = 64.0
+margin_bottom = 169.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -100,7 +103,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 stretch_mode = 0
 
 [node name="Value" type="Label" parent="Items/Weight" index="1"]
@@ -156,7 +159,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 stretch_mode = 0
 
 [node name="Value" type="Label" parent="Items/Food" index="1"]
@@ -198,13 +201,15 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+theme = ExtResource( 6 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Go"
+text = "Go!"
 flat = false
 align = 1
+_sections_unfolded = [ "Textures", "Theme" ]
 
 [node name="FeedButton" type="Button" parent="Items" index="4"]
 
@@ -223,13 +228,15 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+theme = ExtResource( 6 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Eat"
+text = "Feed"
 flat = false
 align = 1
+_sections_unfolded = [ "Theme" ]
 
 [connection signal="pressed" from="Items/SacrificeButton" to="." method="_on_SacrificeButton_pressed"]
 

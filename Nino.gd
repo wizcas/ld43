@@ -1,6 +1,7 @@
 extends Area2D
 signal hp_changed
 signal dead
+signal victory
 
 export (int) var max_hp = 10
 export (int) var initial_meat_weight = 4
@@ -48,5 +49,8 @@ func _on_Nino_area_entered(area):
 	print('area: {0}'.format([area.name]))
 	if area.is_in_group('food'):
 		area.consume()
+		eat()
 	if area.is_in_group('servant') and not area.is_following:
 		get_node('..').recruit(area)
+	if area.is_in_group('goal'):
+		emit_signal('victory')

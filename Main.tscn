@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Game.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui/GameOver.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gui/Victory.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gui/Pause.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gui/Menu.tscn" type="PackedScene" id=6]
+
+[node name="Main" type="Node"]
+
+script = ExtResource( 1 )
+game = ExtResource( 2 )
+game_over_w = ExtResource( 3 )
+victory_w = ExtResource( 4 )
+pause_w = ExtResource( 5 )
+
+[node name="Menu" parent="." index="0" instance=ExtResource( 6 )]
+
+layer = -99
+
+[connection signal="pressed" from="Menu/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+
+
+[editable path="Menu"]

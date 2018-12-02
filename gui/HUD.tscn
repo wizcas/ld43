@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://gui/HUD.gd" type="Script" id=1]
 [ext_resource path="res://gui/ServantCard.tscn" type="PackedScene" id=2]
-[ext_resource path="res://gui/HP.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gui/cardboard-panel.tres" type="StyleBox" id=3]
+[ext_resource path="res://gui/HP.tscn" type="PackedScene" id=4]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -21,7 +22,7 @@ anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -210.0
+margin_top = -200.0
 grow_vertical = 0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -29,7 +30,8 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-_sections_unfolded = [ "Grow Direction", "Margin", "Rect", "custom_styles" ]
+custom_styles/panel = ExtResource( 3 )
+_sections_unfolded = [ "Grow Direction", "Margin", "Rect", "Theme", "custom_styles" ]
 
 [node name="MarginContainer" type="MarginContainer" parent="Bg" index="0"]
 
@@ -37,10 +39,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 1017.0
-margin_bottom = 203.0
+margin_left = 10.0
+margin_top = 5.0
+margin_right = 1014.0
+margin_bottom = 195.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -61,8 +63,8 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 2.0
 margin_top = 2.0
-margin_right = 1008.0
-margin_bottom = 194.0
+margin_right = 1002.0
+margin_bottom = 188.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -79,15 +81,16 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 586.0
-margin_bottom = 192.0
+margin_right = 592.0
+margin_bottom = 186.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-_sections_unfolded = [ "Size Flags" ]
+custom_styles/panel = ExtResource( 3 )
+_sections_unfolded = [ "Size Flags", "custom_styles" ]
 
 [node name="ServantList" type="HBoxContainer" parent="Bg/MarginContainer/Groups/Left" index="0"]
 
@@ -95,10 +98,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 579.0
-margin_bottom = 185.0
+margin_left = 10.0
+margin_top = 5.0
+margin_right = 582.0
+margin_bottom = 181.0
 rect_min_size = Vector2( 572, 0 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -113,9 +116,9 @@ _sections_unfolded = [ "Grow Direction", "Rect", "Size Flags", "Theme", "custom_
 
 [node name="ServantCard" parent="Bg/MarginContainer/Groups/Left/ServantList" index="1" instance=ExtResource( 2 )]
 
-margin_left = 504.0
+margin_left = 498.0
 margin_right = 572.0
-margin_bottom = 178.0
+margin_bottom = 176.0
 
 [node name="Mid" type="PanelContainer" parent="Bg/MarginContainer/Groups" index="1"]
 
@@ -123,9 +126,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 588.0
-margin_right = 852.0
-margin_bottom = 192.0
+margin_left = 594.0
+margin_right = 864.0
+margin_bottom = 186.0
 rect_min_size = Vector2( 256, 0 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -133,6 +136,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_styles/panel = ExtResource( 3 )
 _sections_unfolded = [ "Margin", "Rect", "Size Flags" ]
 
 [node name="NinoStatus" type="HBoxContainer" parent="Bg/MarginContainer/Groups/Mid" index="0"]
@@ -141,10 +145,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 257.0
-margin_bottom = 185.0
+margin_left = 10.0
+margin_top = 5.0
+margin_right = 260.0
+margin_bottom = 181.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -161,7 +165,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 178.0
-margin_bottom = 178.0
+margin_bottom = 176.0
 rect_min_size = Vector2( 178, 0 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -179,7 +183,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 182.0
 margin_right = 250.0
-margin_bottom = 178.0
+margin_bottom = 176.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -189,55 +193,55 @@ size_flags_vertical = 1
 columns = 2
 _sections_unfolded = [ "Rect", "Size Flags", "custom_constants" ]
 
-[node name="HP0" parent="Bg/MarginContainer/Groups/Mid/NinoStatus/HpMeter" index="0" instance=ExtResource( 3 )]
+[node name="HP0" parent="Bg/MarginContainer/Groups/Mid/NinoStatus/HpMeter" index="0" instance=ExtResource( 4 )]
 
-[node name="HP1" parent="Bg/MarginContainer/Groups/Mid/NinoStatus/HpMeter" index="1" instance=ExtResource( 3 )]
+[node name="HP1" parent="Bg/MarginContainer/Groups/Mid/NinoStatus/HpMeter" index="1" instance=ExtResource( 4 )]
 
 margin_left = 36.0
 margin_right = 68.0
 
-[node name="HP2" parent="Bg/MarginContainer/Groups/Mid/NinoStatus/HpMeter" index="2" instance=ExtResource( 3 )]
+[node name="HP2" parent="Bg/MarginContainer/Groups/Mid/NinoStatus/HpMeter" index="2" instance=ExtResource( 4 )]
 
 margin_top = 36.0
 margin_bottom = 68.0
 
-[node name="HP3" parent="Bg/MarginContainer/Groups/Mid/NinoStatus/HpMeter" index="3" instance=ExtResource( 3 )]
+[node name="HP3" parent="Bg/MarginContainer/Groups/Mid/NinoStatus/HpMeter" index="3" instance=ExtResource( 4 )]
 
 margin_left = 36.0
 margin_top = 36.0
 margin_right = 68.0
 margin_bottom = 68.0
 
-[node name="HP4" parent="Bg/MarginContainer/Groups/Mid/NinoStatus/HpMeter" index="4" instance=ExtResource( 3 )]
+[node name="HP4" parent="Bg/MarginContainer/Groups/Mid/NinoStatus/HpMeter" index="4" instance=ExtResource( 4 )]
 
 margin_top = 72.0
 margin_bottom = 104.0
 
-[node name="HP5" parent="Bg/MarginContainer/Groups/Mid/NinoStatus/HpMeter" index="5" instance=ExtResource( 3 )]
+[node name="HP5" parent="Bg/MarginContainer/Groups/Mid/NinoStatus/HpMeter" index="5" instance=ExtResource( 4 )]
 
 margin_left = 36.0
 margin_top = 72.0
 margin_right = 68.0
 margin_bottom = 104.0
 
-[node name="HP6" parent="Bg/MarginContainer/Groups/Mid/NinoStatus/HpMeter" index="6" instance=ExtResource( 3 )]
+[node name="HP6" parent="Bg/MarginContainer/Groups/Mid/NinoStatus/HpMeter" index="6" instance=ExtResource( 4 )]
 
 margin_top = 108.0
 margin_bottom = 140.0
 
-[node name="HP7" parent="Bg/MarginContainer/Groups/Mid/NinoStatus/HpMeter" index="7" instance=ExtResource( 3 )]
+[node name="HP7" parent="Bg/MarginContainer/Groups/Mid/NinoStatus/HpMeter" index="7" instance=ExtResource( 4 )]
 
 margin_left = 36.0
 margin_top = 108.0
 margin_right = 68.0
 margin_bottom = 140.0
 
-[node name="HP8" parent="Bg/MarginContainer/Groups/Mid/NinoStatus/HpMeter" index="8" instance=ExtResource( 3 )]
+[node name="HP8" parent="Bg/MarginContainer/Groups/Mid/NinoStatus/HpMeter" index="8" instance=ExtResource( 4 )]
 
 margin_top = 144.0
 margin_bottom = 176.0
 
-[node name="HP9" parent="Bg/MarginContainer/Groups/Mid/NinoStatus/HpMeter" index="9" instance=ExtResource( 3 )]
+[node name="HP9" parent="Bg/MarginContainer/Groups/Mid/NinoStatus/HpMeter" index="9" instance=ExtResource( 4 )]
 
 margin_left = 36.0
 margin_top = 144.0
@@ -250,9 +254,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 854.0
-margin_right = 1006.0
-margin_bottom = 192.0
+margin_left = 866.0
+margin_right = 1000.0
+margin_bottom = 186.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -260,6 +264,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 size_flags_stretch_ratio = 0.6
+custom_styles/panel = ExtResource( 3 )
 _sections_unfolded = [ "Rect", "Size Flags" ]
 
 [node name="Lines" type="VBoxContainer" parent="Bg/MarginContainer/Groups/Right" index="0"]
@@ -268,10 +273,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 145.0
-margin_bottom = 185.0
+margin_left = 10.0
+margin_top = 5.0
+margin_right = 124.0
+margin_bottom = 181.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -286,9 +291,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 73.0
-margin_right = 138.0
-margin_bottom = 87.0
+margin_top = 72.0
+margin_right = 114.0
+margin_bottom = 86.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -307,9 +312,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 91.0
-margin_right = 138.0
-margin_bottom = 105.0
+margin_top = 90.0
+margin_right = 114.0
+margin_bottom = 104.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -350,7 +355,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 69.0
-margin_right = 138.0
+margin_right = 114.0
 margin_bottom = 14.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -363,5 +368,30 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Margin", "Rect", "Size Flags" ]
+
+[node name="Pause" type="Button" parent="." index="1"]
+
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -50.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Pause"
+flat = false
+align = 1
+
+[connection signal="pressed" from="Pause" to="." method="_on_Pause_pressed"]
 
 

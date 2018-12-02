@@ -1,7 +1,7 @@
 extends Area2D
 
-export (int) var speed = 400
-export (int) var height = 200
+export (int) var speed = 200
+export (int) var height = 128
 export (Vector2) var angular_range = Vector2(180, 720)
 
 var initial_pos
