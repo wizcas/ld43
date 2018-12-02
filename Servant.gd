@@ -37,7 +37,7 @@ func _process(delta):
 		if abs(to_x - position.x) < 1:
 			position.x = to_x
 		else:
-			position.x = lerp(position.x, to_x, delta)	
+			position.x = lerp(position.x, to_x, delta * 5)	
 
 func goto(x):
 	to_x = x

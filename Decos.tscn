@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Decos.gd" type="Script" id=1]
+[ext_resource path="res://sprites/env/tree-left-1.png" type="Texture" id=2]
+[ext_resource path="res://sprites/env/tree-right-1.png" type="Texture" id=3]
+[ext_resource path="res://sprites/env/tree-mid-1.png" type="Texture" id=4]
+[ext_resource path="res://sprites/env/tree-mid-2.png" type="Texture" id=5]
+[ext_resource path="res://sprites/env/tree-mid-3.png" type="Texture" id=6]
+
+[sub_resource type="TileSet" id=1]
+
+0/name = "tree-left-1"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/is_autotile = false
+0/occluder_offset = Vector2( 32, 32 )
+0/navigation_offset = Vector2( 32, 32 )
+0/shapes = [  ]
+1/name = "tree-right-1"
+1/texture = ExtResource( 3 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 64 )
+1/is_autotile = false
+1/occluder_offset = Vector2( 32, 32 )
+1/navigation_offset = Vector2( 32, 32 )
+1/shapes = [  ]
+2/name = "tree-mid-1"
+2/texture = ExtResource( 4 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 64, 64 )
+2/is_autotile = false
+2/occluder_offset = Vector2( 32, 32 )
+2/navigation_offset = Vector2( 32, 32 )
+2/shapes = [  ]
+3/name = "tree-mid-2"
+3/texture = ExtResource( 5 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 64, 64 )
+3/is_autotile = false
+3/occluder_offset = Vector2( 32, 32 )
+3/navigation_offset = Vector2( 32, 32 )
+3/shapes = [  ]
+4/name = "tree-mid-3"
+4/texture = ExtResource( 6 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 0, 64, 64 )
+4/is_autotile = false
+4/occluder_offset = Vector2( 32, 32 )
+4/navigation_offset = Vector2( 32, 32 )
+4/shapes = [  ]
+
+[node name="Decos" type="Node2D"]
+
+script = ExtResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="." index="0"]
+
+mode = 0
+tile_set = SubResource( 1 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -65532, 0, 0, -65531, 2, 0, -65530, 3, 0, -65529, 1, 0, -65523, 0, 0, -65522, 2, 0, -65521, 1, 0, -65520, 0, 0, -65519, 3, 0, -65518, 3, 0, -65517, 2, 0, -65516, 4, 0, -65515, 1, 0, -65513, 0, 0, -65512, 3, 0, -65511, 2, 0, -65510, 3, 0, -65509, 1, 0, -65505, 0, 0, -65504, 3, 0, -65503, 1, 0, -65495, 0, 0, -65494, 1, 0, -65491, 0, 0, -65490, 2, 0, -65489, 3, 0, -65488, 4, 0, -65487, 1, 0 )
+_sections_unfolded = [ "Cell" ]
+
+

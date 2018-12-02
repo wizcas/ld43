@@ -34,8 +34,8 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="HUD" parent="CanvasLayer" index="0" instance=ExtResource( 5 )]
 
-[connection signal="size_changed" from="Team" to="CanvasLayer/HUD" method="_on_Team_size_changed"]
-
 [connection signal="size_changed" from="Team" to="Team/MainCam" method="_on_Team_size_changed"]
+
+[connection signal="size_changed" from="Team" to="CanvasLayer/HUD" method="_on_Team_size_changed"]
 
 

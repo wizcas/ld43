@@ -11,7 +11,7 @@ var sprite_pool = [
 		'mobs': ['husky'],
 	},
 	{
-		'desire': 400,
+		'desire': 500,
 		'mobs': ['kuma'],
 	}
 ]
@@ -38,7 +38,7 @@ func get_sprite():
 			tex = sprite_conf.mobs[randi() % sprite_conf.mobs.size()]
 			break
 	if tex == null:
-		print('NULL MOB SPRITE!!!!!')
+		print('NULL MOB SPRITE!!!!! (desire: {0})'.format([desire]))
 		return
 	var path = 'res://sprites/foe/{0}.png'.format([tex])
 	print('Mob sprite: {0}'.format([path]))
@@ -61,6 +61,7 @@ func satisfy():
 	queue_free()
 
 func _on_Mob_area_entered(area):
+	print('{0}: {1}'.format([area.name, area.get_groups()]))
 	if area.is_in_group("servant"):
 		print ('servant hit')
 		attack(area)

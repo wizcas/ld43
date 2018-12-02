@@ -36,6 +36,7 @@ _is_debug = false
 
 position = Vector2( 0, -64 )
 shape = SubResource( 1 )
+disabled = true
 _sections_unfolded = [ "Transform" ]
 
 [node name="Nino" parent="." index="1" instance=ExtResource( 4 )]
