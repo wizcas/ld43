@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://gui/hp-1.png" type="Texture" id=1]
+[ext_resource path="res://sprites/crown.png" type="Texture" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 32.0
 
-[node name="Goal" type="Area2D" groups=[
+[node name="Goal" type="Area2D" index="0" groups=[
 "goal",
 ]]
 
@@ -21,10 +21,13 @@ audio_bus_name = "Master"
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
+position = Vector2( 0, -32 )
 texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
+position = Vector2( 0, -30 )
 shape = SubResource( 1 )
 
 
