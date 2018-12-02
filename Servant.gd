@@ -16,13 +16,15 @@ var meat_weight = 0
 var chr_name = ''
 var is_charging = false
 var mouse_over = false
-var to_x = 0
+var to_x = null
+var is_following = false
 
 func _ready():
 	food = min_food + randi() % (max_food - min_food)
 	meat_weight = min_weight + randi() % (max_weight - min_weight)
 	chr_name = 'Servant'
-	to_x = position.x	
+#	if to_x == null:
+#		to_x = position.x	
 	connect("mouse_entered",self,"_mouse_over", [true])
 	connect("mouse_exited",self,"_mouse_over", [false])
 	set_process_unhandled_input(true)
@@ -31,13 +33,18 @@ func _ready():
 func _process(delta):
 	# Called every frame. Delta is time since last frame.
 	# Update game logic here.
+	if not is_following:
+		return
 	if is_charging:
 		position.x += charge_speed * delta
-	elif to_x != position.x:
-		if abs(to_x - position.x) < 1:
-			position.x = to_x
-		else:
-			position.x = lerp(position.x, to_x, delta * 5)	
+	elif to_x != position.x and abs(to_x - position.x) > 1:
+		position.x = lerp(position.x, to_x, delta * 5)	
+	else:
+		position.x = to_x
+
+func follow():
+	is_following = true
+	position = Vector2(0,0)
 
 func goto(x):
 	to_x = x

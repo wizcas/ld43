@@ -50,19 +50,42 @@ func size():
 func tail():
 	return spawn_start_x - size() * (slot_width + margin)
 
+func recruit(s):
+	if size() >= max_size:
+		return
+	s.follow()	
+	call_deferred('_do_recruit', s)
+
+func _do_recruit(s):
+	print('recruiting')
+	s.id = next_servant_index
+	next_servant_index += 1
+#	s.position = Vector2(_random_pick_x(size()), 0)
+	if not s.is_connected('gone', self, GONE_HANDLER):
+		s.connect('gone', self, GONE_HANDLER)
+	if not s.is_connected('feeding', self, FEEDING_HANDLER):
+		s.connect('feeding', self, FEEDING_HANDLER)
+	s.get_parent().remove_child(s)
+	add_child(s)
+	s.goto(_random_pick_x(size()))
+	servants.append(s)
+	_notify_change()
+	print('recruited')	
+
 func spawn_servant():
 	if size() >= max_size:
 		return
 	var s = servant_gen.instance()
 	s.id = next_servant_index
 	next_servant_index += 1
-	s.position = Vector2(_random_pick_x(size()), 0)
+	s.follow()
 	if not s.is_connected('gone', self, GONE_HANDLER):
 		s.connect('gone', self, GONE_HANDLER)
 	if not s.is_connected('feeding', self, FEEDING_HANDLER):
 		s.connect('feeding', self, FEEDING_HANDLER)
-	servants.append(s)
 	add_child(s)
+	s.goto(_random_pick_x(size()))
+	servants.append(s)
 	_notify_change()
 
 func _random_pick_x(i):

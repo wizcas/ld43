@@ -30,5 +30,8 @@ func die():
 	queue_free()
 
 func _on_Nino_area_entered(area):
+	print('area: {0}'.format([area.name]))
 	if area.is_in_group('food'):
 		area.consume()
+	if area.is_in_group('servant') and not area.is_following:
+		get_node('..').recruit(area)

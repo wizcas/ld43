@@ -1,22 +1,27 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Mob.tscn" type="PackedScene" id=2]
-[ext_resource path="res://sprites/env/bg.png" type="Texture" id=3]
-[ext_resource path="res://Ground.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Decos.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Team.tscn" type="PackedScene" id=6]
-[ext_resource path="res://MainCam.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Servant.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/env/bg.png" type="Texture" id=4]
+[ext_resource path="res://Ground.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Decos.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Team.tscn" type="PackedScene" id=7]
+[ext_resource path="res://MainCam.tscn" type="PackedScene" id=8]
 
 [node name="World" type="Node" index="0"]
 
 script = ExtResource( 1 )
 mob_gen = ExtResource( 2 )
+servant_gen = ExtResource( 3 )
 distance = 500
 mob_start_distance = 10
 mob_end_distance = 20
 min_mob_margin = 10
 max_mob_margin = 30
+min_servant_margin = 5
+max_servant_margin = 10
+servant_possibility = 0.5
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="0"]
 
@@ -42,24 +47,28 @@ _sections_unfolded = [ "Motion" ]
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
 
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 centered = false
 offset = Vector2( -500, -300 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 9000, 600 )
 _sections_unfolded = [ "Offset", "Region" ]
 
-[node name="Ground" parent="." index="1" instance=ExtResource( 4 )]
+[node name="Ground" parent="." index="1" instance=ExtResource( 5 )]
 
 distance = 200
 
-[node name="Decos" parent="." index="2" instance=ExtResource( 5 )]
+[node name="Decos" parent="." index="2" instance=ExtResource( 6 )]
 
-[node name="Team" parent="." index="3" instance=ExtResource( 6 )]
+[node name="Team" parent="." index="3" instance=ExtResource( 7 )]
 
 _is_debug = true
 
-[node name="MainCam" parent="Team" index="2" instance=ExtResource( 7 )]
+[node name="MainCam" parent="Team" index="2" instance=ExtResource( 8 )]
+
+[node name="Servant" parent="." index="4" instance=ExtResource( 3 )]
+
+position = Vector2( 230, 0 )
 
 [connection signal="size_changed" from="Team" to="Team/MainCam" method="_on_Team_size_changed"]
 
