@@ -1,4 +1,6 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://gui/boxtheme.tres" type="Theme" id=1]
 
 [node name="ToMenu" type="Button"]
 
@@ -17,6 +19,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+theme = ExtResource( 1 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -24,6 +27,6 @@ group = null
 text = "Back To Menu"
 flat = false
 align = 1
-_sections_unfolded = [ "Margin", "Rect" ]
+_sections_unfolded = [ "Theme" ]
 
 

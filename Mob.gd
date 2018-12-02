@@ -7,7 +7,7 @@ export (float) var fight_interval
 var desire = 0
 var sprite_pool = [
 	{
-		'desire': 100,
+		'desire': 200,
 		'mobs': ['husky'],
 	},
 	{

@@ -9,7 +9,7 @@ export (PackedScene) var servant_gen
 export (int) var map_range = 500
 export (int) var goal_distance = 300
 export (int) var mob_start_distance = 10
-export (int) var mob_end_distance = 20
+export (int) var mob_end_distance = 10
 export (int) var min_mob_margin = 10
 export (int) var max_mob_margin = 30
 export (int) var min_servant_margin = 5
@@ -51,6 +51,8 @@ func gen_mobs():
 	while mob_meter < goal_distance - mob_end_distance:
 		mob_meter_list.append(mob_meter)
 		var m = mob_gen.instance()
+		if mob_meter < goal_distance * 0.3:
+			m.max_desire = int(0.5 * m.max_desire)
 		m.position.x= meter2x(mob_meter)
 		print('mob {0} @ {1} ({2})'.format([i, mob_meter, m.position]))
 		add_child(m)
@@ -63,7 +65,10 @@ func gen_servants():
 		var spacing = mob_meter_list[i+1] - mob_meter
 		var servant_meter = rnd_meter(min_servant_margin, max_servant_margin)
 		while servant_meter < spacing:
-			if randf() <= servant_possibility:				
+			var p = servant_possibility
+			if mob_meter >= goal_distance * 0.3:
+				p *= 1.5
+			if randf() <= p:
 				var s = servant_gen.instance()
 				s.position.x = meter2x(servant_meter + mob_meter)
 				s.position.y = $Ground.surface_world_y().y

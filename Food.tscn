@@ -1,7 +1,57 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Food.gd" type="Script" id=1]
 [ext_resource path="res://gui/food-sm.png" type="Texture" id=2]
+
+[sub_resource type="Gradient" id=2]
+
+offsets = PoolRealArray( 0.380586, 0.664099, 0.818182, 1 )
+colors = PoolColorArray( 0.218979, 0.389275, 0.441406, 1, 0.176544, 0.532569, 0.695313, 1, 0.230713, 0.38451, 0.46875, 0.848471, 0.65979, 0.786572, 0.898438, 0 )
+
+[sub_resource type="GradientTexture" id=3]
+
+flags = 4
+gradient = SubResource( 2 )
+width = 2048
+
+[sub_resource type="ParticlesMaterial" id=4]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 180.0
+flatness = 0.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 20.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 2.0
+scale_random = 0.5
+color_ramp = SubResource( 3 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Color", "Initial Velocity", "Scale", "Spread" ]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -25,11 +75,33 @@ speed = 200
 height = 128
 angular_range = Vector2( 180, 720 )
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="Particles2D" type="Particles2D" parent="." index="0"]
+
+emitting = true
+amount = 30
+lifetime = 1.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.3
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 4 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Process Material", "Time" ]
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
 
 texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
 shape = SubResource( 1 )
 

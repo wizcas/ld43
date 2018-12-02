@@ -1,9 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://gui/boxtheme.tres" type="Theme" id=1]
-[ext_resource path="res://gui/ToMenu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui/ToMenu.tscn" type="PackedScene" id=1]
 
-[node name="Pause" type="CanvasLayer" index="0"]
+[node name="Pause" type="CanvasLayer"]
 
 layer = 2
 offset = Vector2( 0, 0 )
@@ -26,49 +25,28 @@ size_flags_vertical = 1
 color = Color( 0.168167, 0.347712, 0.417969, 1 )
 _sections_unfolded = [ "Rect", "Size Flags", "Theme" ]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." index="1"]
-
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -104.5
-margin_top = -102.0
-margin_right = 104.5
-margin_bottom = 102.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-theme = ExtResource( 1 )
-custom_constants/separation = 30
-alignment = 0
-_sections_unfolded = [ "Rect", "Theme", "custom_constants" ]
-
-[node name="ToMenu" parent="VBoxContainer" index="0" instance=ExtResource( 2 )]
+[node name="ToMenu" parent="." index="1" instance=ExtResource( 1 )]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 209.0
-margin_bottom = 100.0
+margin_left = 407.0
+margin_top = 198.0
+margin_right = 616.0
+margin_bottom = 298.0
 rect_min_size = Vector2( 120, 100 )
 
-[node name="Resume" parent="VBoxContainer" index="1" instance=ExtResource( 2 )]
+[node name="Resume" parent="." index="2" instance=ExtResource( 1 )]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 0.0
-margin_top = 130.0
-margin_right = 209.0
-margin_bottom = 230.0
+margin_left = 407.0
+margin_top = 328.0
+margin_right = 616.0
+margin_bottom = 428.0
 rect_min_size = Vector2( 120, 100 )
 text = "Resume"
 
