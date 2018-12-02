@@ -22,8 +22,8 @@ func _ready():
 	var ground = get_node('../Ground')
 	position.y = ground.surface_world_y().y
 	desire = min_desire + randi() % (max_desire - min_desire)
+	update_bubble()
 	$Sprite.texture = get_sprite()
-	pass
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
@@ -54,11 +54,15 @@ func attack(target):
 	
 func eat(weight):
 	desire -= weight
+	update_bubble()
 	if desire <= 0:
 		satisfy()
 	
 func satisfy():
 	queue_free()
+	
+func update_bubble():
+	$Bubble/Container/Text.text = '{0}kg wanted'.format([desire])
 
 func _on_Mob_area_entered(area):
 	print('{0}: {1}'.format([area.name, area.get_groups()]))

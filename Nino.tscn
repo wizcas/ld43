@@ -44,7 +44,7 @@ _sections_unfolded = [ "Collision", "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
-hp = 5
+max_hp = 10
 initial_meat_weight = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]

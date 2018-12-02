@@ -1,6 +1,7 @@
 extends Area2D
 
 signal size_changed
+signal nino_hp_changed
 
 export (PackedScene) var servant_gen
 export (PackedScene) var food_gen
@@ -43,6 +44,9 @@ func _process(delta):
 func set_y_offset(offset):
 	var vp_size = get_viewport_rect().size
 	position.y = vp_size.y - offset
+	
+func nino():
+	return $Nino
 			
 func size():
 	return servants.size()
@@ -132,4 +136,6 @@ func _on_Servant_feeding(servant):
 	var f = food_gen.instance()
 	f.fly(from, to)
 	add_child(f)
-	
+
+func _on_Nino_hp_changed(hp):
+	emit_signal('nino_hp_changed', hp)

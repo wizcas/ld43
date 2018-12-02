@@ -4,7 +4,10 @@ export (PackedScene) var servant_card_gen
 
 onready var servant_root = $Bg/MarginContainer/Groups/Left/ServantList
 onready var card_mark = $Bg/MarginContainer/Groups/Left/ServantList/Mark
+onready var hp_meter = $Bg/MarginContainer/Groups/Mid/NinoStatus/HpMeter
 var servant_cards = []
+var cur_hp = 0
+var hp_dirty = false
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -13,10 +16,10 @@ func _ready():
 		if card != card_mark:
 			card.free()
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+func _process(delta):
+	# Called every frame. Delta is time since last frame.
+	# Update game logic here.
+	update_hp()
 
 
 func _on_Team_size_changed(team, size, tail):
@@ -57,3 +60,15 @@ func delete_card(card):
 	if card == null:
 		return
 	card.ui.queue_free()
+
+func _on_Team_nino_hp_changed(hp):
+	cur_hp = hp
+	hp_dirty = true
+
+func update_hp():
+	if hp_dirty and hp_meter != null:
+		print('updating hp: {0}'.format([cur_hp]))
+		for i in hp_meter.get_child_count():
+			var filled = cur_hp - i > 0
+			hp_meter.get_child(i).update(filled)
+		hp_dirty = false

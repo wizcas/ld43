@@ -45,4 +45,6 @@ _sections_unfolded = [ "Transform" ]
 
 [connection signal="area_exited" from="." to="." method="_on_Team_area_exited"]
 
+[connection signal="hp_changed" from="Nino" to="." method="_on_Nino_hp_changed"]
+
 

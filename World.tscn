@@ -9,7 +9,7 @@
 [ext_resource path="res://Team.tscn" type="PackedScene" id=7]
 [ext_resource path="res://MainCam.tscn" type="PackedScene" id=8]
 
-[node name="World" type="Node" index="0"]
+[node name="World" type="Node"]
 
 script = ExtResource( 1 )
 mob_gen = ExtResource( 2 )
@@ -69,6 +69,11 @@ _is_debug = true
 [node name="Servant" parent="." index="4" instance=ExtResource( 3 )]
 
 position = Vector2( 230, 0 )
+
+[node name="First Mob" type="Position2D" parent="." index="5"]
+
+position = Vector2( 1280, 0 )
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [connection signal="size_changed" from="Team" to="Team/MainCam" method="_on_Team_size_changed"]
 
