@@ -26,6 +26,7 @@ func _ready():
 	connect("mouse_entered",self,"_mouse_over", [true])
 	connect("mouse_exited",self,"_mouse_over", [false])
 	set_process_unhandled_input(true)
+	$Anim.play("walk")
 
 func _process(delta):
 	# Called every frame. Delta is time since last frame.
@@ -56,6 +57,7 @@ func charge():
 	print('CHARGE!: ' + chr_name)
 	# CHARGE!
 	is_charging = true
+	$Anim.play("charge")
 	emit_signal("gone", self)
 	
 func hurt():

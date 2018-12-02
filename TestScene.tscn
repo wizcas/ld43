@@ -11,10 +11,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Ground" parent="." index="0" instance=ExtResource( 1 )]
 
-distance = 100
-neg_length = 10
-height = 5
-
 [node name="Team" parent="." index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 0, 530 )
@@ -22,6 +18,8 @@ y_offset = 30
 _is_debug = true
 
 [node name="MainCam" parent="Team" index="1" instance=ExtResource( 3 )]
+
+offset_x_min = 50
 
 [node name="Mob" parent="." index="2" instance=ExtResource( 4 )]
 

@@ -1,66 +1,23 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Ground.gd" type="Script" id=1]
+[ext_resource path="res://sprites/env/ground_tileset.tres" type="TileSet" id=2]
 
-[sub_resource type="StreamTexture" id=1]
-
-flags = 4
-load_path = "res://.import/ground1.png-6a1326f37c77c3112bb9bd9878103d41.stex"
-
-[sub_resource type="StreamTexture" id=2]
-
-flags = 4
-load_path = "res://.import/ground2.png-e820f4d838d5144c9f8c8053490908fc.stex"
-
-[sub_resource type="StreamTexture" id=3]
-
-flags = 4
-load_path = "res://.import/ground3.png-2517b203b23104897e4801eb10a12b2d.stex"
-
-[sub_resource type="TileSet" id=4]
-
-0/name = ""
-0/texture = SubResource( 1 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 0, 0 )
-0/is_autotile = false
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shapes = [  ]
-1/name = ""
-1/texture = SubResource( 2 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 0, 0, 0, 0 )
-1/is_autotile = false
-1/occluder_offset = Vector2( 0, 0 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shapes = [  ]
-2/name = ""
-2/texture = SubResource( 3 )
-2/tex_offset = Vector2( 0, 0 )
-2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 0, 0, 0, 0 )
-2/is_autotile = false
-2/occluder_offset = Vector2( 0, 0 )
-2/navigation_offset = Vector2( 0, 0 )
-2/shapes = [  ]
-
-[node name="Ground" type="Node2D" index="0"]
+[node name="Ground" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Cell" ]
-surface_y = 4
+surface_y = 5
 distance = 100
 neg_length = 10
 height = 5
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 
+scale = Vector2( 2, 2 )
 mode = 0
-tile_set = SubResource( 4 )
-cell_size = Vector2( 128, 128 )
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 cell_half_offset = 2
@@ -75,6 +32,6 @@ collision_mask = 1
 occluder_light_mask = 1
 format = 1
 tile_data = PoolIntArray(  )
-_sections_unfolded = [ "Cell" ]
+_sections_unfolded = [ "Cell", "Transform" ]
 
 

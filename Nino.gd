@@ -3,12 +3,15 @@ extends Area2D
 export (int) var hp = 5
 export (int) var initial_meat_weight = 4
 
+onready var anim = $Anim
+
 var meat_weight = 0
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	meat_weight = initial_meat_weight
+	anim.play("walk")
 	pass
 
 #func _process(delta):

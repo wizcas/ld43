@@ -20,7 +20,7 @@ playback/speed = 1.0
 
 [node name="Cam" type="Camera2D" parent="." index="1"]
 
-offset = Vector2( 0, -530 )
+offset = Vector2( 0, -500 )
 anchor_mode = 0
 rotating = false
 current = true

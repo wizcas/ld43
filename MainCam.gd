@@ -24,6 +24,9 @@ func setPos(team, size, tail):
 	var newzoom = abs(tail) / offset
 	var newx = tail
 	var newy = -initial_vp_size.y * (newzoom-1)
+#	_cam.offset.y = -team.position.y
+#	var newy = -team.position.y
+#	var newy = 0
 	var newpos = Vector2(newx, newy)
 #	print('newzoom: {0}, newx: {1}, newy: {2}'.format([newzoom, newx, newy]))
 	var distance = (newpos - position).length()	

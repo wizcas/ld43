@@ -5,7 +5,6 @@ signal size_changed
 export (PackedScene) var servant_gen
 export (PackedScene) var food_gen
 export (int) var y_offset = 30
-export (int) var x_offset = 30
 export (int) var max_size = 5
 export (int) var spawn_start_x = -100
 export (int) var margin = 30
@@ -26,8 +25,11 @@ func _enter_tree():
 	next_spawn_pos = Vector2(spawn_start_x, 0)
 
 func _ready():
-	var vp_size = get_viewport_rect().size
-	position.y = vp_size.y - y_offset
+	
+#	position.y = vp_size.y - y_offset
+#	set_y_offset(y_offset)
+	position.y = get_node('../Ground').surface_world_y().y
+	print('y: {0}'.format([position.y]))
 	_notify_change()
 	march()
 
@@ -37,7 +39,10 @@ func _process(delta):
 	if _is_debug:
 		if Input.is_action_just_pressed("ui_test"):
 			spawn_servant()
-			
+
+func set_y_offset(offset):
+	var vp_size = get_viewport_rect().size
+	position.y = vp_size.y - offset
 			
 func size():
 	return servants.size()

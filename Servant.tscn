@@ -1,25 +1,54 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Servant.gd" type="Script" id=1]
 [ext_resource path="res://BloodFx.tscn" type="PackedScene" id=2]
-[ext_resource path="res://sprites/man_test.png" type="Texture" id=3]
+[ext_resource path="res://sprites/human/human-male.png" type="Texture" id=3]
 
-[sub_resource type="SpriteFrames" id=1]
-
-animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 64.0
-height = 128.0
+radius = 16.0
+height = 64.0
 
-[node name="Servant" type="Area2D" index="0" groups=[
+[sub_resource type="Animation" id=3]
+
+resource_name = "charge"
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "walk"
+length = 1.6
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[node name="Servant" type="Area2D" groups=[
 "servant",
 ]]
 
@@ -41,27 +70,19 @@ min_food = 0
 max_food = 5
 min_weight = 40
 max_weight = 200
-charge_speed = 300
+charge_speed = 400
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
-position = Vector2( 0, -122 )
-scale = Vector2( 0.25, 0.25 )
-frames = SubResource( 1 )
-animation = "default"
+position = Vector2( 0, -64 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
-
-position = Vector2( 0, -128 )
-shape = SubResource( 2 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="2"]
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="1"]
 
 rect = Rect2( -10, -10, 20, 20 )
 
-[node name="FeedButton" type="Button" parent="." index="3"]
+[node name="FeedButton" type="Button" parent="." index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -85,6 +106,25 @@ group = null
 text = "Feed"
 flat = false
 align = 1
+
+[node name="Sprite" type="Sprite" parent="." index="3"]
+
+texture = ExtResource( 3 )
+offset = Vector2( 0, -64 )
+hframes = 18
+frame = 13
+_sections_unfolded = [ "Animation", "Offset" ]
+
+[node name="Anim" type="AnimationPlayer" parent="." index="4"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/charge = SubResource( 3 )
+anims/walk = SubResource( 2 )
+blend_times = [  ]
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 
