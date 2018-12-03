@@ -7,7 +7,7 @@
 custom_solver_bias = 0.0
 radius = 32.0
 
-[node name="Goal" type="Area2D" index="0" groups=[
+[node name="Goal" type="Area2D" groups=[
 "goal",
 ]]
 

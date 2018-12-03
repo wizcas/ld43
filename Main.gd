@@ -36,13 +36,16 @@ func unpause():
 	if pause_wnd != null:
 		remove_child(pause_wnd)
 		
-func on_game_over():
+func on_game_over(sacrificed_count, distance):
 	var g = game_over_w.instance()
+	g.get_node('Data/SacrificedValue').text = str(sacrificed_count)
+	g.get_node('Data/DistanceValue').text = '{0}m'.format([int(distance)])
 	add_child(g)
 	bind_to_menu(g)
 	
-func on_victory():
+func on_victory(sacrificed_count):
 	var g = victory_w.instance()
+	g.get_node('Data/SacrificedValue').text = str(sacrificed_count)
 	add_child(g)
 	bind_to_menu(g)
 		

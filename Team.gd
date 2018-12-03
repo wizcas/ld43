@@ -8,7 +8,7 @@ signal victory
 export (PackedScene) var servant_gen
 export (PackedScene) var food_gen
 export (int) var y_offset = 30
-export (int) var max_size = 5
+export (int) var max_size = 8
 export (int) var spawn_start_x = -100
 export (int) var margin = 30
 export (int) var slot_width = 100
@@ -18,11 +18,13 @@ export (bool) var _is_debug
 
 const GONE_HANDLER = '_on_Servant_gone'
 const FEEDING_HANDLER = '_on_Servant_feeding'
+const SACRIFICED_HANDLER = '_on_Servant_sacrificed'
 
 var next_spawn_pos
 var servants = []
 var next_servant_index = 1
 var cur_speed
+var sacrificed_count = 0
 
 func _enter_tree():
 	next_spawn_pos = Vector2(spawn_start_x, 0)
@@ -71,6 +73,8 @@ func _do_recruit(s):
 		s.connect('gone', self, GONE_HANDLER)
 	if not s.is_connected('feeding', self, FEEDING_HANDLER):
 		s.connect('feeding', self, FEEDING_HANDLER)
+	if not s.is_connected('sacrificed', self, SACRIFICED_HANDLER):
+		s.connect('sacrificed', self, SACRIFICED_HANDLER)
 	s.get_parent().remove_child(s)
 	add_child(s)
 	s.goto(_random_pick_x(size()))
@@ -138,14 +142,17 @@ func _on_Servant_feeding(servant):
 	var f = food_gen.instance()
 	f.fly(from, to)
 	add_child(f)
+	
+func _on_Servant_sacrificed():
+	sacrificed_count += 1
 
 func _on_Nino_hp_changed(hp):
 	emit_signal('nino_hp_changed', hp)
 
 func _on_Nino_dead():
 	stop()
-	emit_signal('nino_dead')
+	emit_signal('nino_dead', sacrificed_count)
 
 func _on_Nino_victory():
 	stop()
-	emit_signal('victory')
+	emit_signal('victory', sacrificed_count)

@@ -3,7 +3,7 @@ signal hp_changed
 signal dead
 signal victory
 
-export (int) var max_hp = 10
+export (int) var max_hp = 5
 export (int) var initial_meat_weight = 4
 
 onready var anim = $Anim
@@ -39,7 +39,7 @@ func eat():
 		
 func die():
 	print('game over')
-	emit_single('dead')
+	emit_signal('dead')
 	queue_free()
 	
 func _notify_hp_changed():

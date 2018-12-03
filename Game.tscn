@@ -7,6 +7,8 @@
 
 [node name="World" parent="." index="0" instance=ExtResource( 1 )]
 
+mob_end_distance = 10
+
 [node name="ParallaxBackground" parent="World" index="0"]
 
 editor/display_folded = true

@@ -19,7 +19,7 @@ pause_w = ExtResource( 5 )
 
 layer = -99
 
-[connection signal="pressed" from="Menu/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Menu/Start" to="." method="_on_Start_pressed"]
 
 
 [editable path="Menu"]

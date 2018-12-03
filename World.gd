@@ -82,9 +82,9 @@ func place_goal():
 func cur_distance():
 	return x2meter($Team.position.x)
 
-func _on_Team_nino_dead():
-	emit_signal('game_over')
+func _on_Team_nino_dead(sacrificed_count):
+	emit_signal('game_over', sacrificed_count, cur_distance())
 
 
-func _on_Team_victory():
-	emit_signal('victory')
+func _on_Team_victory(sacrificed_count):
+	emit_signal('victory', sacrificed_count)
