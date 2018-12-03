@@ -6,7 +6,7 @@ signal sacrificed
 
 export (PackedScene) var bloodfx
 export (int) var min_food = 0
-export (int) var max_food = 5
+export (int) var max_food = 2
 export (int) var min_weight = 40
 export (int) var max_weight = 200
 export (int) var charge_speed = 300

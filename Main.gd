@@ -1,10 +1,11 @@
 extends Node
 
-export (PackedScene) var game
+export (PackedScene) var game_w
 export (PackedScene) var game_over_w
 export (PackedScene) var victory_w
 export (PackedScene) var pause_w
 
+var game
 var pause_wnd
 
 func _ready():
@@ -13,11 +14,11 @@ func _ready():
 	pass
 
 func start():
-	var g = game.instance()
-	g.get_node('HUD').connect('paused', self, 'pause')
-	g.get_node('World').connect('game_over', self, 'on_game_over')
-	g.get_node('World').connect('victory', self, 'on_victory')
-	add_child(g)
+	game = game_w.instance()
+	game.get_node('HUD').connect('paused', self, 'pause')
+	game.get_node('World').connect('game_over', self, 'on_game_over')
+	game.get_node('World').connect('victory', self, 'on_victory')
+	add_child(game)
 	remove_child($Menu)
 	pause_wnd = pause_w.instance()
 	bind_to_menu(pause_wnd)
@@ -26,15 +27,18 @@ func start():
 func restart():
 	for child in get_children():
 		child.queue_free()
+	get_tree().paused = false	
 	get_tree().reload_current_scene()
 
 func pause():
 	if pause_wnd != null:
 		add_child(pause_wnd)
+		get_tree().paused = true
 
 func unpause():
 	if pause_wnd != null:
 		remove_child(pause_wnd)
+		get_tree().paused = false
 		
 func on_game_over(sacrificed_count, distance):
 	var g = game_over_w.instance()

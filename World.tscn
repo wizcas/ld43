@@ -10,7 +10,7 @@
 [ext_resource path="res://MainCam.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Goal.tscn" type="PackedScene" id=9]
 
-[node name="World" type="Node"]
+[node name="World" type="Node" index="0"]
 
 script = ExtResource( 1 )
 mob_gen = ExtResource( 2 )
@@ -102,16 +102,19 @@ _is_debug = true
 
 position = Vector2( 230, 32 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform" ]
+max_food = 2
 
 [node name="Servant2" parent="." index="11" instance=ExtResource( 3 )]
 
 position = Vector2( 420, 30 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform" ]
+max_food = 2
 
 [node name="Servant3" parent="." index="12" instance=ExtResource( 3 )]
 
 position = Vector2( 790, 30 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform" ]
+max_food = 2
 
 [node name="First Mob" type="Position2D" parent="." index="13"]
 

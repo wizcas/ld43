@@ -51,7 +51,7 @@ func gen_mobs():
 	while mob_meter < goal_distance - mob_end_distance:
 		mob_meter_list.append(mob_meter)
 		var m = mob_gen.instance()
-		if mob_meter < goal_distance * 0.3:
+		if mob_meter < goal_distance * 0.6:
 			m.max_desire = int(0.5 * m.max_desire)
 		m.position.x= meter2x(mob_meter)
 		print('mob {0} @ {1} ({2})'.format([i, mob_meter, m.position]))
@@ -66,8 +66,8 @@ func gen_servants():
 		var servant_meter = rnd_meter(min_servant_margin, max_servant_margin)
 		while servant_meter < spacing:
 			var p = servant_possibility
-			if mob_meter >= goal_distance * 0.3:
-				p *= 1.5
+			if mob_meter >= goal_distance * 0.6:
+				p *= 1.7
 			if randf() <= p:
 				var s = servant_gen.instance()
 				s.position.x = meter2x(servant_meter + mob_meter)

@@ -41,7 +41,7 @@ margin_right = 619.0
 margin_bottom = 340.0
 rect_min_size = Vector2( 120, 100 )
 text = "Resume"
-_sections_unfolded = [ "Rect", "Theme" ]
+_sections_unfolded = [ "Pause", "Rect", "Theme" ]
 
 [node name="ToMenu" parent="." index="2" instance=ExtResource( 2 )]
 
@@ -54,7 +54,7 @@ margin_top = 370.0
 margin_right = 619.0
 margin_bottom = 470.0
 rect_min_size = Vector2( 120, 100 )
-_sections_unfolded = [ "Rect", "Theme" ]
+_sections_unfolded = [ "Pause", "Rect", "Theme" ]
 
 [node name="Label" type="Label" parent="." index="3"]
 

@@ -10,7 +10,7 @@
 [node name="Main" type="Node"]
 
 script = ExtResource( 1 )
-game = ExtResource( 2 )
+game_w = ExtResource( 2 )
 game_over_w = ExtResource( 3 )
 victory_w = ExtResource( 4 )
 pause_w = ExtResource( 5 )

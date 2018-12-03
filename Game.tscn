@@ -13,6 +13,10 @@ mob_end_distance = 10
 
 editor/display_folded = true
 
+[node name="Servant" parent="World" index="4"]
+
+max_food = 2
+
 [node name="HUD" parent="." index="1" instance=ExtResource( 2 )]
 
 [connection signal="game_over" from="World" to="." method="_on_World_game_over"]

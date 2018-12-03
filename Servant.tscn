@@ -86,7 +86,7 @@ __meta__ = {
 }
 bloodfx = ExtResource( 2 )
 min_food = 0
-max_food = 5
+max_food = 2
 min_weight = 40
 max_weight = 200
 charge_speed = 400
