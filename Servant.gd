@@ -29,7 +29,6 @@ func _ready():
 	connect("mouse_entered",self,"_mouse_over", [true])
 	connect("mouse_exited",self,"_mouse_over", [false])
 	set_process_unhandled_input(true)
-	$Anim.play("walk")
 
 func _process(delta):
 	# Called every frame. Delta is time since last frame.
@@ -46,6 +45,7 @@ func _process(delta):
 func follow():
 	is_following = true
 	position = Vector2(0,0)
+	$Anim.play("walk")
 
 func goto(x):
 	to_x = x
@@ -62,6 +62,7 @@ func charge():
 	# CHARGE!
 	is_charging = true
 	$Anim.play("charge")
+	$SfxCharge.play()
 	emit_signal("gone", self)
 	
 func hurt():

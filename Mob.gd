@@ -1,13 +1,13 @@
 extends Area2D
 
 export (int) var min_desire = 20
-export (int) var max_desire = 500
+export (int) var max_desire = 300
 export (float) var fight_interval
 
 var desire = 0
 var sprite_pool = [
 	{
-		'desire': 200,
+		'desire': 150,
 		'mobs': ['husky'],
 	},
 	{

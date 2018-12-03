@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Team.gd" type="Script" id=1]
 [ext_resource path="res://Servant.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Food.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Nino.tscn" type="PackedScene" id=4]
+[ext_resource path="res://audio/get.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -42,7 +43,16 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Nino" parent="." index="1" instance=ExtResource( 4 )]
 
-max_hp = 5
+[node name="SfxRecruit" type="AudioStreamPlayer2D" parent="." index="2"]
+
+stream = ExtResource( 5 )
+volume_db = -5.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
 
 [connection signal="area_entered" from="." to="." method="_on_Team_area_entered"]
 

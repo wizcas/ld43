@@ -23,6 +23,7 @@ _is_debug = true
 [node name="Mob" parent="." index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 870, 580 )
+max_desire = 300
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="3"]
 

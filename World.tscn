@@ -125,7 +125,7 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Goal" parent="." index="15" instance=ExtResource( 9 )]
 
-position = Vector2( -290, 0 )
+position = Vector2( -290, 32 )
 _sections_unfolded = [ "Transform" ]
 
 [connection signal="size_changed" from="Team" to="Team/MainCam" method="_on_Team_size_changed"]

@@ -79,6 +79,7 @@ func _do_recruit(s):
 	add_child(s)
 	s.goto(_random_pick_x(size()))
 	servants.append(s)
+	$SfxRecruit.play()
 	_notify_change()
 	print('recruited')	
 

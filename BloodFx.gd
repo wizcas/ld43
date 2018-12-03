@@ -9,7 +9,7 @@ func _ready():
 	# Initialization here
 	$Timer.wait_time = lifetime + 0.1
 	$Timer.start()
-	print('boom')
+	$Sfx.play()
 	emitting = true
 
 func _on_Timer_timeout():

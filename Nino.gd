@@ -28,6 +28,7 @@ func _ready():
 func hurt():
 	hp -= 1
 	_notify_hp_changed()
+	$SfxHurt.play()
 	if hp <= 0:
 		die()
 		
@@ -35,6 +36,7 @@ func eat():
 	if(hp >= max_hp):
 		return
 	hp += 1
+	$SfxEat.play()
 	_notify_hp_changed()
 		
 func die():
